@@ -7,6 +7,7 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
     return AnnotatedRegion(
       value: const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -26,12 +27,16 @@ class WelcomeScreen extends StatelessWidget {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Image.asset(
-                              'assets/images/logo_green.png',
+                              isDark
+                                  ? 'assets/images/logo_white.png'
+                                  : 'assets/images/logo_green.png',
                               width: AppSizes.height100,
                             ),
                             SizedBox(width: AppSizes.width10),
                             Image.asset(
-                              'assets/images/afric_shop_black.png',
+                              isDark
+                                  ? 'assets/images/afric_shop_white.png'
+                                  : 'assets/images/afric_shop_black.png',
                               width: AppSizes.height140,
                             ),
                           ],
@@ -39,7 +44,7 @@ class WelcomeScreen extends StatelessWidget {
                       ),
                       Container(
                         decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor.withOpacity(0.05),
+                          color: Theme.of(context).colorScheme.primary.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(AppSizes.radius30),
                         ),
                       ),
@@ -48,9 +53,9 @@ class WelcomeScreen extends StatelessWidget {
                         right: AppSizes.width10,
                         child: IconButton(
                           onPressed: () {},
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.wb_sunny,
-                            color: Colors.orange,
+                            color: isDark ? Colors.grey.shade600 : Colors.orange,
                           ),
                         ),
                       ),

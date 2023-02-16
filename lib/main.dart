@@ -1,5 +1,6 @@
 import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/features/onboard/screens/welcome_screen.dart';
+import 'package:afric_shop_app/app/themes/app_themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -21,10 +22,8 @@ class MainApp extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           title: 'Afric Shop',
-          theme: ThemeData(
-            fontFamily: 'Poppins',
-            colorSchemeSeed: const Color(0xFF006D40),
-          ),
+          theme: AppThemes.lightMode(),
+          darkTheme: AppThemes.darkMode(),
           home: home,
         );
       },
