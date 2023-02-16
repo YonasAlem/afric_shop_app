@@ -14,6 +14,7 @@ class MainApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Afric Shop',
       theme: ThemeData(
+        fontFamily: 'Poppins',
         colorSchemeSeed: const Color(0xFF006D40),
       ),
       home: const WelcomeScreen(),
