@@ -1,3 +1,4 @@
+import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,7 +15,7 @@ class WelcomeScreen extends StatelessWidget {
       child: Scaffold(
         body: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.all(20),
+            padding: EdgeInsets.all(AppSizes.height20),
             child: Column(
               children: [
                 Expanded(
@@ -26,12 +27,12 @@ class WelcomeScreen extends StatelessWidget {
                           children: [
                             Image.asset(
                               'assets/images/logo_green.png',
-                              width: 100,
+                              width: AppSizes.height100,
                             ),
-                            const SizedBox(width: 10),
+                            SizedBox(width: AppSizes.width10),
                             Image.asset(
                               'assets/images/afric_shop_black.png',
-                              width: 140,
+                              width: AppSizes.height140,
                             ),
                           ],
                         ),
@@ -39,12 +40,12 @@ class WelcomeScreen extends StatelessWidget {
                       Container(
                         decoration: BoxDecoration(
                           color: Theme.of(context).primaryColor.withOpacity(0.05),
-                          borderRadius: BorderRadius.circular(30),
+                          borderRadius: BorderRadius.circular(AppSizes.radius30),
                         ),
                       ),
                       Positioned(
-                        top: 10,
-                        right: 10,
+                        top: AppSizes.height10,
+                        right: AppSizes.width10,
                         child: IconButton(
                           onPressed: () {},
                           icon: const Icon(
@@ -56,24 +57,24 @@ class WelcomeScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: AppSizes.height20),
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.35,
                   child: Column(
                     children: [
-                      const Text(
+                      Text(
                         "Let's get you started",
                         style: TextStyle(
-                          fontSize: 34,
+                          fontSize: AppSizes.font34,
                           fontWeight: FontWeight.bold,
                           letterSpacing: 1.5,
                         ),
                       ),
-                      const SizedBox(height: 10),
-                      const Text(
+                      SizedBox(height: AppSizes.width10),
+                      Text(
                         "If you are a merchant, please activate supplier mode when you sign up.",
                         style: TextStyle(
-                          fontSize: 15,
+                          fontSize: AppSizes.font15,
                           letterSpacing: 1.2,
                           color: Colors.grey,
                         ),
@@ -83,17 +84,17 @@ class WelcomeScreen extends StatelessWidget {
                         children: [
                           Expanded(
                             child: SizedBox(
-                              height: 50,
+                              height: AppSizes.height50,
                               child: FilledButton.tonal(
                                 onPressed: () {},
                                 child: const Text('LOGIN'),
                               ),
                             ),
                           ),
-                          const SizedBox(width: 10),
+                          SizedBox(width: AppSizes.width10),
                           Expanded(
                             child: SizedBox(
-                              height: 50,
+                              height: AppSizes.height50,
                               child: FilledButton(
                                 onPressed: () {},
                                 child: const Text('SIGN UP'),
