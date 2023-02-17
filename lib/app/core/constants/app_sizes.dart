@@ -9,6 +9,7 @@ class AppSizes {
   // all heights used in the app
   static final double height10 = 10.h;
   static final double height20 = 20.h;
+  static final double height30 = 30.h;
   static final double height50 = 50.h;
   static final double height100 = 100.h;
   static final double height140 = 140.h;
