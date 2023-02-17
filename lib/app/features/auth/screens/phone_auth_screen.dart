@@ -1,18 +1,19 @@
-import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
+import 'dart:developer';
+
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
-import 'package:afric_shop_app/app/core/widgets/widgets.dart';
-import 'package:afric_shop_app/app/features/auth/screens/email_login_screen.dart';
-import 'package:afric_shop_app/app/features/auth/screens/phone_auth_screen.dart';
 import 'package:flutter/material.dart';
 
-class EmailSignUpScreen extends StatefulWidget {
-  const EmailSignUpScreen({super.key});
+import '../../../core/constants/app_sizes.dart';
+import '../../../core/widgets/widgets.dart';
+
+class PhoneAuthScreen extends StatefulWidget {
+  const PhoneAuthScreen({super.key});
 
   @override
-  State<EmailSignUpScreen> createState() => _EmailSignUpScreenState();
+  State<PhoneAuthScreen> createState() => _PhoneAuthScreenState();
 }
 
-class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
+class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
   bool _isSupplier = false;
   @override
   Widget build(BuildContext context) {
@@ -29,28 +30,23 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                 ),
                 SizedBox(height: AppSizes.height20),
                 const HeadlineText(
-                  text: 'Create new account',
+                  text: 'Your number',
                   fontSize: 20,
                 ),
-                SizedBox(height: AppSizes.height20 + AppSizes.height10),
+                SizedBox(height: AppSizes.height30),
                 TextFormField(
+                  readOnly: true,
+                  onTap: () {
+                    log('message');
+                  },
+                  textAlign: TextAlign.center,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.email,
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
                     isDense: true,
-                    labelText: 'Email',
-                    labelStyle: TextStyle(
-                      color: context.color.onBackground.withOpacity(.5),
+                    hintText: 'ET Ethiopia',
+                    hintStyle: TextStyle(
+                      color: context.color.onBackground.withOpacity(.8),
                     ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    disabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
                       borderSide: BorderSide(
                         color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
@@ -59,44 +55,92 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(16),
                       borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(.3),
+                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
                       ),
                     ),
                   ),
                 ),
                 SizedBox(height: AppSizes.height10),
-                TextFormField(
-                  obscureText: true,
-                  keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    isDense: true,
-                    labelText: 'Password',
-                    labelStyle: TextStyle(
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 80,
+                      child: TextFormField(
+                        readOnly: true,
+                        onTap: () {
+                          log('message');
+                        },
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          hintText: '+ ' '251',
+                          hintStyle: TextStyle(
+                            color: context.color.onBackground.withOpacity(.8),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onBackground
+                                  .withOpacity(.1),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onBackground
+                                  .withOpacity(.1),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
+                    SizedBox(width: AppSizes.width10),
+                    Expanded(
+                      child: TextFormField(
+                        readOnly: false,
+                        onTap: () {
+                          log('message');
+                        },
+                        textAlign: TextAlign.left,
+                        decoration: InputDecoration(
+                          isDense: true,
+                          hintText: 'phone number',
+                          hintStyle: TextStyle(
+                            color: context.color.onBackground.withOpacity(.4),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onBackground
+                                  .withOpacity(.1),
+                            ),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onBackground
+                                  .withOpacity(.1),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(16),
+                            borderSide: BorderSide(
+                              color:
+                                  Theme.of(context).colorScheme.primary.withOpacity(.3),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(.3),
-                      ),
-                    ),
-                  ),
+                  ],
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -137,28 +181,6 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                   text: 'CONTINUE',
                   width: double.maxFinite,
                 ),
-                SizedBox(height: AppSizes.height10),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text("Already have an account?"),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (_) => const EmailLoginScreen()),
-                        );
-                      },
-                      style: TextButton.styleFrom(
-                        foregroundColor: context.color.onBackground,
-                      ),
-                      child: const Text(
-                        'Login',
-                        style: TextStyle(fontWeight: FontWeight.w700),
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(height: AppSizes.height20),
                 const SubtitleText(text: 'OR'),
                 SizedBox(height: AppSizes.height20),
@@ -170,10 +192,7 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: InkWell(
                           onTap: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (_) => const PhoneAuthScreen()),
-                            );
+                            Navigator.pop(context);
                           },
                           borderRadius: BorderRadius.circular(14),
                           child: Container(
@@ -188,9 +207,7 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                               ),
                               borderRadius: BorderRadius.circular(14),
                             ),
-                            child: Image.asset(
-                              'assets/icons/phone.png',
-                            ),
+                            child: const Icon(Icons.alternate_email),
                           ),
                         ),
                       ),

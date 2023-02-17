@@ -2,6 +2,7 @@ import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
 import 'package:afric_shop_app/app/core/widgets/widgets.dart';
 import 'package:afric_shop_app/app/features/auth/screens/email_sign_up_screen.dart';
+import 'package:afric_shop_app/app/features/auth/screens/phone_auth_screen.dart';
 import 'package:flutter/material.dart';
 
 class EmailLoginScreen extends StatefulWidget {
@@ -135,23 +136,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                   ],
                 ),
                 SizedBox(height: AppSizes.height20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Or",
-                      style: TextStyle(
-                        color: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .color!
-                            .withOpacity(.2),
-                        fontSize: 16,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                  ],
-                ),
+                const SubtitleText(text: 'OR'),
                 SizedBox(height: AppSizes.height20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -160,7 +145,12 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                         child: InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(builder: (_) => const PhoneAuthScreen()),
+                            );
+                          },
                           borderRadius: BorderRadius.circular(14),
                           child: Container(
                             height: 50,
