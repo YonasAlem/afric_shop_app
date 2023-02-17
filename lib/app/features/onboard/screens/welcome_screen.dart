@@ -1,5 +1,6 @@
 import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
+import 'package:afric_shop_app/app/features/auth/screens/email_sign_up_screen.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart'
     show ThemeSwitchingArea;
 import 'package:flutter/material.dart';
@@ -67,7 +68,14 @@ class WelcomeScreen extends StatelessWidget {
                             SizedBox(width: AppSizes.width10),
                             Expanded(
                               child: PrimaryFilledButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (_) => const EmailSignUpScreen(),
+                                    ),
+                                  );
+                                },
                                 text: 'SIGN UP',
                               ),
                             ),
