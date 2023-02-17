@@ -1,18 +1,17 @@
 import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
 import 'package:afric_shop_app/app/core/widgets/widgets.dart';
-import 'package:afric_shop_app/app/features/auth/screens/email_login_screen.dart';
+import 'package:afric_shop_app/app/features/auth/screens/email_sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
-class EmailSignUpScreen extends StatefulWidget {
-  const EmailSignUpScreen({super.key});
+class EmailLoginScreen extends StatefulWidget {
+  const EmailLoginScreen({super.key});
 
   @override
-  State<EmailSignUpScreen> createState() => _EmailSignUpScreenState();
+  State<EmailLoginScreen> createState() => _EmailLoginScreenState();
 }
 
-class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
-  bool _isSupplier = false;
+class _EmailLoginScreenState extends State<EmailLoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +27,7 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                 ),
                 SizedBox(height: AppSizes.height20),
                 const HeadlineText(
-                  text: 'Create new account',
+                  text: 'Welcome back',
                   fontSize: 20,
                 ),
                 SizedBox(height: AppSizes.height20 + AppSizes.height10),
@@ -99,34 +98,11 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                 ),
                 Align(
                   alignment: Alignment.centerRight,
-                  child: SizedBox(
-                    height: AppSizes.height50,
-                    child: TextButton(
-                      onPressed: () {
-                        setState(() => _isSupplier = !_isSupplier);
-                      },
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Text(
-                            'Supplier',
-                            style: TextStyle(
-                              color: _isSupplier ? null : Colors.grey,
-                            ),
-                          ),
-                          Checkbox(
-                            value: _isSupplier,
-                            materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            side: const BorderSide(color: Colors.grey),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(6),
-                            ),
-                            onChanged: (value) {
-                              setState(() => _isSupplier = !_isSupplier);
-                            },
-                          ),
-                        ],
-                      ),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Forget password?',
+                      style: TextStyle(color: Colors.deepOrange),
                     ),
                   ),
                 ),
@@ -140,19 +116,19 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Already have an account?"),
+                    const Text("Don't have an account, yet?"),
                     TextButton(
                       onPressed: () {
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (_) => const EmailLoginScreen()),
+                          MaterialPageRoute(builder: (_) => const EmailSignUpScreen()),
                         );
                       },
                       style: TextButton.styleFrom(
                         foregroundColor: context.color.onBackground,
                       ),
                       child: const Text(
-                        'Login',
+                        'Sign Up',
                         style: TextStyle(fontWeight: FontWeight.w700),
                       ),
                     ),
@@ -205,6 +181,56 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                         ),
                       ),
                     ),
+                    Material(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(14),
+                          child: Container(
+                            height: 50,
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onBackground
+                                    .withOpacity(.1),
+                              ),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Image.asset(
+                              'assets/icons/google.png',
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Material(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: InkWell(
+                          onTap: () {},
+                          borderRadius: BorderRadius.circular(14),
+                          child: Container(
+                            height: 50,
+                            padding: const EdgeInsets.all(12),
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onBackground
+                                    .withOpacity(.1),
+                              ),
+                              borderRadius: BorderRadius.circular(14),
+                            ),
+                            child: Image.asset(
+                              'assets/icons/guest.png',
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ],
