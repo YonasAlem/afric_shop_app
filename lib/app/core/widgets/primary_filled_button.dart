@@ -21,12 +21,15 @@ class PrimaryFilledButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: _height ?? AppSizes.height50,
-      width: _width,
-      child: FilledButton(
-        onPressed: _onPressed,
-        child: Text(_text),
+    return Hero(
+      tag: 'filled',
+      child: SizedBox(
+        height: _height ?? AppSizes.height50,
+        width: _width,
+        child: FilledButton(
+          onPressed: _onPressed,
+          child: Text(_text),
+        ),
       ),
     );
   }

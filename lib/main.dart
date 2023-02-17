@@ -1,5 +1,6 @@
 import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
-import 'package:afric_shop_app/app/features/auth/screens/supplier_info_screen.dart';
+import 'package:afric_shop_app/app/features/onboard/screens/welcome_screen.dart';
+import 'package:afric_shop_app/app/routes/app_router.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -28,13 +29,14 @@ class MainApp extends StatelessWidget {
           designSize: AppSizes.designSize,
           minTextAdapt: true,
           splitScreenMode: true,
-          child: const SupplierInfoScreen(),
+          child: const WelcomeScreen(),
           builder: (_, home) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               title: 'Afric Shop',
               theme: theme,
               home: home,
+              onGenerateRoute: AppRouter.onGenerateRoute,
             );
           },
         );

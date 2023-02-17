@@ -7,6 +7,26 @@ class AppThemes {
     return ThemeData(
       useMaterial3: true,
       fontFamily: 'Poppins',
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: const Color(0xFF191C1A).withOpacity(.1),
+          ),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: const Color(0xFF191C1A).withOpacity(.1),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: const Color(0xFF006D40).withOpacity(.3),
+          ),
+        ),
+      ),
       colorScheme: const ColorScheme(
         brightness: Brightness.light,
         primary: Color(0xFF006D40),
@@ -47,6 +67,26 @@ class AppThemes {
     return ThemeData(
       useMaterial3: true,
       fontFamily: 'Poppins',
+      inputDecorationTheme: InputDecorationTheme(
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: const Color(0xFFE1E3DE).withOpacity(.1),
+          ),
+        ),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: const Color(0xFFE1E3DE).withOpacity(.1),
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide(
+            color: const Color(0xFF79da9f).withOpacity(.3),
+          ),
+        ),
+      ),
       colorScheme: const ColorScheme(
         brightness: Brightness.dark,
         primary: Color(0xFF79da9f),

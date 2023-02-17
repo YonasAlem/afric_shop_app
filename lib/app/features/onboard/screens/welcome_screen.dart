@@ -1,15 +1,23 @@
 import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
-import 'package:afric_shop_app/app/features/auth/screens/email_sign_up_screen.dart';
 import 'package:animated_theme_switcher/animated_theme_switcher.dart'
     show ThemeSwitchingArea;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemUiOverlayStyle;
 
 import '../../../core/widgets/widgets.dart';
+import '../../../routes/app_routes.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
+
+  void navigateToEmailLoginScreen(context) {
+    Navigator.pushNamed(context, AppRoutes.emailLogin);
+  }
+
+  void navigateToEmailSignupScreen(context) {
+    Navigator.pushNamed(context, AppRoutes.emailSignup);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,21 +69,14 @@ class WelcomeScreen extends StatelessWidget {
                           children: [
                             Expanded(
                               child: PrimaryTonalButton(
-                                onPressed: () {},
+                                onPressed: () => navigateToEmailLoginScreen(context),
                                 text: 'LOGIN',
                               ),
                             ),
                             SizedBox(width: AppSizes.width10),
                             Expanded(
                               child: PrimaryFilledButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (_) => const EmailSignUpScreen(),
-                                    ),
-                                  );
-                                },
+                                onPressed: () => navigateToEmailSignupScreen(context),
                                 text: 'SIGN UP',
                               ),
                             ),

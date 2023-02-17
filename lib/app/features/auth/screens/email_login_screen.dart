@@ -1,8 +1,8 @@
+import 'package:afric_shop_app/app/core/constants/app_images.dart';
 import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
 import 'package:afric_shop_app/app/core/widgets/widgets.dart';
-import 'package:afric_shop_app/app/features/auth/screens/email_sign_up_screen.dart';
-import 'package:afric_shop_app/app/features/auth/screens/phone_auth_screen.dart';
+import 'package:afric_shop_app/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class EmailLoginScreen extends StatefulWidget {
@@ -13,6 +13,23 @@ class EmailLoginScreen extends StatefulWidget {
 }
 
 class _EmailLoginScreenState extends State<EmailLoginScreen> {
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,70 +49,19 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                   fontSize: 20,
                 ),
                 SizedBox(height: AppSizes.height20 + AppSizes.height10),
-                TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.email,
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    isDense: true,
-                    labelText: 'Email',
-                    labelStyle: TextStyle(
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(.3),
-                      ),
-                    ),
-                  ),
+                PrimaryTextField(
+                  controller: emailController,
+                  labelText: 'Email',
+                  prefixIcon: Icons.email,
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(height: AppSizes.height10),
-                TextFormField(
+                PrimaryTextField(
+                  controller: passwordController,
+                  labelText: 'Password',
+                  prefixIcon: Icons.lock,
                   obscureText: true,
                   keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    isDense: true,
-                    labelText: 'Password',
-                    labelStyle: TextStyle(
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(.3),
-                      ),
-                    ),
-                  ),
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -108,7 +74,7 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                   ),
                 ),
                 SizedBox(height: AppSizes.height20),
-                PrimaryFilledButton(
+                PrimaryTonalButton(
                   onPressed: () {},
                   text: 'CONTINUE',
                   width: double.maxFinite,
@@ -119,12 +85,10 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                   children: [
                     const Text("Don't have an account, yet?"),
                     TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (_) => const EmailSignUpScreen()),
-                        );
-                      },
+                      onPressed: () => Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.emailSignup,
+                      ),
                       style: TextButton.styleFrom(
                         foregroundColor: context.color.onBackground,
                       ),
@@ -141,86 +105,18 @@ class _EmailLoginScreenState extends State<EmailLoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Material(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (_) => const PhoneAuthScreen()),
-                            );
-                          },
-                          borderRadius: BorderRadius.circular(14),
-                          child: Container(
-                            height: 50,
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onBackground
-                                    .withOpacity(.1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: Image.asset(
-                              'assets/icons/phone.png',
-                            ),
-                          ),
-                        ),
-                      ),
+                    SocialIconButton(
+                      onPressed: () => Navigator.pushNamed(context, AppRoutes.phoneAuth),
+                      child: Image.asset(AppImages.phone),
                     ),
-                    Material(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: InkWell(
-                          onTap: () {},
-                          borderRadius: BorderRadius.circular(14),
-                          child: Container(
-                            height: 50,
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onBackground
-                                    .withOpacity(.1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: Image.asset(
-                              'assets/icons/google.png',
-                            ),
-                          ),
-                        ),
-                      ),
+                    SocialIconButton(
+                      onPressed: () {},
+                      child: Image.asset(AppImages.google),
                     ),
-                    Material(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: InkWell(
-                          onTap: () {},
-                          borderRadius: BorderRadius.circular(14),
-                          child: Container(
-                            height: 50,
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onBackground
-                                    .withOpacity(.1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: Image.asset(
-                              'assets/icons/guest.png',
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
+                    SocialIconButton(
+                      onPressed: () {},
+                      child: Image.asset(AppImages.guest),
+                    ),
                   ],
                 ),
               ],

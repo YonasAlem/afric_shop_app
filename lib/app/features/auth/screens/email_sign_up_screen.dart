@@ -1,9 +1,10 @@
 import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
 import 'package:afric_shop_app/app/core/widgets/widgets.dart';
-import 'package:afric_shop_app/app/features/auth/screens/email_login_screen.dart';
-import 'package:afric_shop_app/app/features/auth/screens/phone_auth_screen.dart';
 import 'package:flutter/material.dart';
+
+import '../../../core/constants/app_images.dart';
+import '../../../routes/app_routes.dart';
 
 class EmailSignUpScreen extends StatefulWidget {
   const EmailSignUpScreen({super.key});
@@ -13,7 +14,25 @@ class EmailSignUpScreen extends StatefulWidget {
 }
 
 class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
+  late final TextEditingController emailController;
+  late final TextEditingController passwordController;
+
   bool _isSupplier = false;
+
+  @override
+  void initState() {
+    emailController = TextEditingController();
+    passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,70 +52,19 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                   fontSize: 20,
                 ),
                 SizedBox(height: AppSizes.height20 + AppSizes.height10),
-                TextFormField(
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.email,
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    isDense: true,
-                    labelText: 'Email',
-                    labelStyle: TextStyle(
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(.3),
-                      ),
-                    ),
-                  ),
+                PrimaryTextField(
+                  controller: emailController,
+                  labelText: 'Email',
+                  keyboardType: TextInputType.emailAddress,
+                  prefixIcon: Icons.email,
                 ),
                 SizedBox(height: AppSizes.height10),
-                TextFormField(
+                PrimaryTextField(
+                  controller: passwordController,
+                  labelText: 'Password',
                   obscureText: true,
                   keyboardType: TextInputType.visiblePassword,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(
-                      Icons.lock,
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    isDense: true,
-                    labelText: 'Password',
-                    labelStyle: TextStyle(
-                      color: context.color.onBackground.withOpacity(.5),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.primary.withOpacity(.3),
-                      ),
-                    ),
-                  ),
+                  prefixIcon: Icons.lock,
                 ),
                 Align(
                   alignment: Alignment.centerRight,
@@ -143,12 +111,10 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                   children: [
                     const Text("Already have an account?"),
                     TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(builder: (_) => const EmailLoginScreen()),
-                        );
-                      },
+                      onPressed: () => Navigator.pushReplacementNamed(
+                        context,
+                        AppRoutes.emailLogin,
+                      ),
                       style: TextButton.styleFrom(
                         foregroundColor: context.color.onBackground,
                       ),
@@ -165,35 +131,9 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Material(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 12),
-                        child: InkWell(
-                          onTap: () {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(builder: (_) => const PhoneAuthScreen()),
-                            );
-                          },
-                          borderRadius: BorderRadius.circular(14),
-                          child: Container(
-                            height: 50,
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onBackground
-                                    .withOpacity(.1),
-                              ),
-                              borderRadius: BorderRadius.circular(14),
-                            ),
-                            child: Image.asset(
-                              'assets/icons/phone.png',
-                            ),
-                          ),
-                        ),
-                      ),
+                    SocialIconButton(
+                      onPressed: () => Navigator.pushNamed(context, AppRoutes.phoneAuth),
+                      child: Image.asset(AppImages.phone),
                     ),
                   ],
                 ),

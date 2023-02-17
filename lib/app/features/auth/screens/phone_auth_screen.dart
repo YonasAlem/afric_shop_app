@@ -46,18 +46,6 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                     hintStyle: TextStyle(
                       color: context.color.onBackground.withOpacity(.8),
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(16),
-                      borderSide: BorderSide(
-                        color: Theme.of(context).colorScheme.onBackground.withOpacity(.1),
-                      ),
-                    ),
                   ),
                 ),
                 SizedBox(height: AppSizes.height10),
@@ -77,24 +65,6 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                           hintStyle: TextStyle(
                             color: context.color.onBackground.withOpacity(.8),
                           ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: BorderSide(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onBackground
-                                  .withOpacity(.1),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: BorderSide(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onBackground
-                                  .withOpacity(.1),
-                            ),
-                          ),
                         ),
                       ),
                     ),
@@ -111,31 +81,6 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                           hintText: 'phone number',
                           hintStyle: TextStyle(
                             color: context.color.onBackground.withOpacity(.4),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: BorderSide(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onBackground
-                                  .withOpacity(.1),
-                            ),
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: BorderSide(
-                              color: Theme.of(context)
-                                  .colorScheme
-                                  .onBackground
-                                  .withOpacity(.1),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
-                            borderSide: BorderSide(
-                              color:
-                                  Theme.of(context).colorScheme.primary.withOpacity(.3),
-                            ),
                           ),
                         ),
                       ),
@@ -200,10 +145,7 @@ class _PhoneAuthScreenState extends State<PhoneAuthScreen> {
                             padding: const EdgeInsets.all(12),
                             decoration: BoxDecoration(
                               border: Border.all(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onBackground
-                                    .withOpacity(.1),
+                                color: context.color.onBackground.withOpacity(.1),
                               ),
                               borderRadius: BorderRadius.circular(14),
                             ),

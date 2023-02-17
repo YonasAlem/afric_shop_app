@@ -21,12 +21,15 @@ class PrimaryTonalButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: _height ?? AppSizes.height50,
-      width: _width,
-      child: FilledButton.tonal(
-        onPressed: _onPressed,
-        child: Text(_text),
+    return Hero(
+      tag: 'tonal',
+      child: SizedBox(
+        height: _height ?? AppSizes.height50,
+        width: _width,
+        child: FilledButton.tonal(
+          onPressed: _onPressed,
+          child: Text(_text),
+        ),
       ),
     );
   }
