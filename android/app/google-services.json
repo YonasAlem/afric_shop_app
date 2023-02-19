@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "583448225200",
+    "project_id": "afric-shop-yonas",
+    "storage_bucket": "afric-shop-yonas.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583448225200:android:f7ffcb75ba864f9b46e275",
+        "android_client_info": {
+          "package_name": "com.example.afric_shop_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583448225200-vic2sl1hv7bo25h2g7k7m7n7dkp0ce8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8i1JCKBhGIyR5N3dDjYwFFF1W6govvxg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583448225200-2batk4nqgpqfikgl1rbclrneacsvrbu0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

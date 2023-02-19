@@ -2,22 +2,33 @@ import 'package:afric_shop_app/app/core/constants/app_sizes.dart';
 import 'package:afric_shop_app/app/core/extensions/theme_extension.dart';
 import 'package:afric_shop_app/app/core/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../core/constants/app_images.dart';
 import '../../../routes/app_routes.dart';
+import '../controller/auth_controller.dart';
 
-class EmailSignUpScreen extends StatefulWidget {
+class EmailSignUpScreen extends ConsumerStatefulWidget {
   const EmailSignUpScreen({super.key});
 
   @override
-  State<EmailSignUpScreen> createState() => _EmailSignUpScreenState();
+  ConsumerState<EmailSignUpScreen> createState() => _EmailSignUpScreenState();
 }
 
-class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
+class _EmailSignUpScreenState extends ConsumerState<EmailSignUpScreen> {
   late final TextEditingController emailController;
   late final TextEditingController passwordController;
 
   bool _isSupplier = false;
+
+  signupWithEmailAndPassword() async {
+    ref.watch(authControllerProvider.notifier).signupWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+          isSupplier: _isSupplier,
+          context: context,
+        );
+  }
 
   @override
   void initState() {
@@ -101,7 +112,7 @@ class _EmailSignUpScreenState extends State<EmailSignUpScreen> {
                 ),
                 SizedBox(height: AppSizes.height20),
                 PrimaryFilledButton(
-                  onPressed: () {},
+                  onPressed: signupWithEmailAndPassword,
                   text: 'CONTINUE',
                   width: double.maxFinite,
                 ),

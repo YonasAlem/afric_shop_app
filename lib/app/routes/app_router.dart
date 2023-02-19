@@ -1,6 +1,9 @@
+import 'package:afric_shop_app/app/features/auth/screens/customer_info_screen.dart';
 import 'package:afric_shop_app/app/features/auth/screens/email_login_screen.dart';
 import 'package:afric_shop_app/app/features/auth/screens/email_sign_up_screen.dart';
+import 'package:afric_shop_app/app/features/auth/screens/email_verify_screen.dart';
 import 'package:afric_shop_app/app/features/auth/screens/phone_auth_screen.dart';
+import 'package:afric_shop_app/app/features/auth/screens/supplier_info_screen.dart';
 import 'package:afric_shop_app/app/features/onboard/screens/welcome_screen.dart';
 import 'package:afric_shop_app/app/routes/app_routes.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +38,27 @@ class AppRouter {
       case AppRoutes.phoneAuth:
         return PageTransition(
           child: const PhoneAuthScreen(),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
+          reverseDuration: const Duration(milliseconds: 500),
+        );
+      case AppRoutes.supplierInfo:
+        return PageTransition(
+          child: const SupplierInfoScreen(),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
+          reverseDuration: const Duration(milliseconds: 500),
+        );
+      case AppRoutes.customerInfo:
+        return PageTransition(
+          child: const CustomerInfoScreen(),
+          type: PageTransitionType.fade,
+          duration: const Duration(milliseconds: 500),
+          reverseDuration: const Duration(milliseconds: 500),
+        );
+      case AppRoutes.emailVerify:
+        return PageTransition(
+          child: const EmailVerifyScreen(),
           type: PageTransitionType.fade,
           duration: const Duration(milliseconds: 500),
           reverseDuration: const Duration(milliseconds: 500),
